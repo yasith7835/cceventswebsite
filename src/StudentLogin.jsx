@@ -10,11 +10,28 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
         console.log('Logging in...');
 
-   
         dispatch(setLogin(true)); 
+
+        try{
+            const API_URL = import.meta.env.VITE_API_KEY;
+            const response = await fetch(`${API_URL}/login`, {
+                method: 'POST', 
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  user_id: studentId,
+                  password: password
+                }),
+              });
+            const loginData = await response.json();
+            alert(loginData.message);
+        }catch(error){
+            alert("Error: " + error.message)
+        }
+
         dispatch(setCurrentPage('landing')); 
     };
 
@@ -49,7 +66,7 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <input type="submit" value="Login" />
+                <button type="submit" value="Login">Login</button>
             </form>
 
             <label>Don't have an account yet?</label>
