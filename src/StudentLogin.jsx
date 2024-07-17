@@ -10,10 +10,7 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Logging in...');
-
-        dispatch(setLogin(true)); 
-
+        console.log('Logging in...'); 
         try{
             const API_URL = import.meta.env.VITE_API_KEY;
             const response = await fetch(`${API_URL}/login`, {
@@ -21,6 +18,7 @@ function Login() {
                 headers: {
                   'Content-Type': 'application/json',
                 },
+                credentials: 'include',
                 body: JSON.stringify({
                   user_id: studentId,
                   password: password
@@ -28,11 +26,14 @@ function Login() {
               });
             const loginData = await response.json();
             alert(loginData.message);
+            if(response.ok){            
+                dispatch(setLogin(true)); 
+                dispatch(setCurrentPage('landing'));
+            }
         }catch(error){
-            alert("Error: " + error.message)
+            console.error(error);
+            alert("Error: " + error.message);
         }
-
-        dispatch(setCurrentPage('landing')); 
     };
 
     const handleCreateAccountClick = () => {
