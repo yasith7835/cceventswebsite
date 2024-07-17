@@ -10,12 +10,30 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        console.log('Logging in...');
-
-   
-        dispatch(setLogin(true)); 
-        dispatch(setCurrentPage('landing')); 
+        console.log('Logging in...'); 
+        try{
+            const API_URL = import.meta.env.VITE_API_KEY;
+            const response = await fetch(`${API_URL}/login`, {
+                method: 'POST', 
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                  user_id: studentId,
+                  password: password
+                }),
+              });
+            const loginData = await response.json();
+            alert(loginData.message);
+            if(response.ok){            
+                dispatch(setLogin(true)); 
+                dispatch(setCurrentPage('landing'));
+            }
+        }catch(error){
+            console.error(error);
+            alert("Error: " + error.message);
+        }
     };
 
     const handleCreateAccountClick = () => {
@@ -49,7 +67,7 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <input type="submit" value="Login" />
+                <button type="submit" value="Login">Login</button>
             </form>
 
             <label>Don't have an account yet?</label>
