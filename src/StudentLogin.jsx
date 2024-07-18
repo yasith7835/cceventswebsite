@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setLogin, setCurrentPage } from './userSlice'; // Assuming these are your Redux actions
+import { setLogin, setCurrentPage } from './userSlice'; 
 import Footer from './Footer.jsx';
 
 function Login() {

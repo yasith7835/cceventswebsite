@@ -6,7 +6,8 @@ import GuestLogin from './GuestLogin.jsx';
 import StudentSignup from './StudentSignup.jsx';
 import GuestSignup from './GuestSignup.jsx';
 import TicketPurchasing from './TicketPurchasing.jsx';
-import SelectUser from './SelectUser.jsx'; 
+import SelectUser from './SelectUser.jsx';
+import QrPage from './QrPage.jsx'; 
 
 function App() {
   const currentPage = useSelector((state) => state.user.currentPage);
@@ -36,6 +37,8 @@ function App() {
   return (
     <>
       {renderPage()}
+     
+
     </>
   );
 }
