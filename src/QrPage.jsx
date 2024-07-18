@@ -8,10 +8,10 @@ const QrPage = () => {
 
   useEffect(() => {
     // Uncomment the line below to fetch codes from the server
-    // fetchCodes();
+    fetchCodes();
 
     // Comment out the line below to use hardcoded codes
-    setHardcodedCodes();
+    /*setHardcodedCodes();*/
   }, []);
 
   // Method to set hardcoded codes for testing

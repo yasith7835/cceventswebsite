@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Footer from './Footer.jsx';
 const API_URL = import.meta.env.VITE_API_KEY;
+import { useDispatch } from 'react-redux';
+import { setCurrentPage } from './userSlice';
 
 
 function TicketPurchasing() {
@@ -28,12 +30,14 @@ function TicketPurchasing() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ntickets, ticketType }),
+        credentials: 'include',
+        body: JSON.stringify({ ntickets }),
       });
 
       if (response.ok) {
         const result = await response.json();
         console.log(result);
+        dispatch(setCurrentPage('qrpage'));
 
         
       } else {

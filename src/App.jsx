@@ -29,6 +29,8 @@ function App() {
         return <TicketPurchasing />;
       case 'selectUser':
         return <SelectUser />;
+      case 'qrpage':
+        return <QrPage />;
       default:
         return <LandingPage />;
     }
