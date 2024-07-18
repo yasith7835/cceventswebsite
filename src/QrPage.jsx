@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import QRCode from 'qrcode.react';
+const API_URL = import.meta.env.VITE_API_KEY;
 
 const QrPage = () => {
   const regularQrRef = useRef();
@@ -22,7 +23,7 @@ const QrPage = () => {
 
   const fetchCodes = async () => {
     try {
-      const response = await fetch('http://localhost:3000/getGeneratedCodes', {
+      const response = await fetch(`${API_URL}/getGeneratedCodes`, {
         credentials: 'include' // Include cookies for authentication
       });
 

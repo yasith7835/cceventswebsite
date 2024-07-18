@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Footer from './Footer.jsx';
+const API_URL = import.meta.env.VITE_API_KEY;
 
 
 function TicketPurchasing() {
@@ -22,7 +23,7 @@ function TicketPurchasing() {
     e.preventDefault(); // Avoid page reload
 
     try {
-      const response = await fetch('http://localhost:3000/purchase', {
+      const response = await fetch(`${API_URL}/purchase`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
