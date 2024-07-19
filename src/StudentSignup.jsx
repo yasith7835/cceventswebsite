@@ -16,7 +16,6 @@ function StudentSignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Avoid page reload
-    const n_regular_tickets = 0;
     const user_type = "student";
 
     // Validate Curtin ID length
@@ -56,7 +55,7 @@ function StudentSignUp() {
         headers: {
           'Content-Type' : 'application/json'
         },
-        body: JSON.stringify({user_id, password, first_name, last_name, phone: `0${phone}`, email, n_regular_tickets, user_type})
+        body: JSON.stringify({user_id, password, first_name, last_name, phone: `0${phone}`, email, user_type})
       });
 
       const errorData = await response.json();
