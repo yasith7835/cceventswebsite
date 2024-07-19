@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setLogin, setCurrentPage } from './userSlice'; // Assuming these are your Redux actions
+import { setLogin, setCurrentPage } from './userSlice';
 import Footer from './Footer.jsx';
 
 function Login() {
@@ -9,19 +9,13 @@ function Login() {
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        console.log('Logging in...');
-
-   
+        e.preventDefault();        
         dispatch(setLogin(true)); 
         dispatch(setCurrentPage('landing')); 
     };
 
     const handleCreateAccountClick = () => {
-        
-        console.log('Navigate to create account page...');
-        
+        dispatch(setCurrentPage('studentSignup'));
     };
 
     return (

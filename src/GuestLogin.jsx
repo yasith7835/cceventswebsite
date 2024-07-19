@@ -15,7 +15,7 @@ function GuestLogin() {
     };
 
     const handleCreateAccountClick = () => {
-        console.log('Navigate to create account page...');
+        dispatch(setCurrentPage('guestSignup'));
     };
 
     return (
