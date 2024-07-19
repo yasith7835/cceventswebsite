@@ -7,6 +7,7 @@ export const userSlice = createSlice({
     login: false,
     userId: null,
     currentPage: 'landing',
+    qrcode: null
   },
   reducers: {
     setLogin: (state, action) => {
@@ -18,9 +19,18 @@ export const userSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    setQrcode: (state, action) => {
+      state.qrcode = action.payload
+    }
   },
 });
 
-export const { setLogin, setUserId, setCurrentPage } = userSlice.actions;
+export const { setLogin, setUserId, setCurrentPage, setQrcode } = userSlice.actions;
 
 export default userSlice.reducer;

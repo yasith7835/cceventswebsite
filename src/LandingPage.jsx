@@ -12,10 +12,10 @@ function LandingPage() {
 
   const handleBuyNowClick = () => {
     if (!login) {
-      // Redirect to SelectUser component if not logged in
+      
       dispatch(setCurrentPage('selectUser'));
     } else {
-      // Redirect to TicketPurchasing component if logged in
+      
       dispatch(setCurrentPage('ticketPurchasing'));
     }
   };

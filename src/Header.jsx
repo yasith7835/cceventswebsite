@@ -6,12 +6,27 @@ function Header() {
   const login = useSelector((state) => state.user.login);
   const dispatch = useDispatch();
 
-  const handleLoginClick = () => {
+  const handleLoginClick = async (e) => {
+    e.preventDefault();
     if (login) {
-      dispatch(setLogin(false)); // Logout action
+      try{
+        const API_URL = import.meta.env.VITE_API_KEY;
+        const response = await fetch(`${API_URL}/logout`, {
+          method: 'POST', 
+          credentials: 'include',
+        });
+        if(response.ok){
+          alert("Logged out.")
+          dispatch(setLogin(false));
+        }else{
+          throw new Error("Error logging out");
+        }
+      }catch(error){
+        alert("Error: " + error.message)
+      }
     } else {
-      dispatch(setLogin(true)); // Login action
-      dispatch(setCurrentPage('selectUser')); // Navigate to SelectUser page
+        dispatch(setLogin(true));
+        dispatch(setCurrentPage('selectUser'));
     }
   };
 
