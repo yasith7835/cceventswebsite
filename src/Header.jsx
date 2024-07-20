@@ -10,23 +10,16 @@ function Header() {
     const checkSession = async () => {
       try {
         const API_URL = import.meta.env.VITE_API_KEY;
-        const sessionId = document.cookie.split('; ').find(row => row.startsWith('sessionId=')).split('=')[1];
-        
-        if (sessionId) {
-          const response = await fetch(`${API_URL}/checkSession`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({ sessionId }),
-          });
 
-          if (response.ok) {
-            dispatch(setLogin(true));
-          } else {
-            dispatch(setLogin(false));
-          }
+        const response = await fetch(`${API_URL}/checkSession`, {
+          method: 'POST',
+          credentials: 'include', 
+        });
+
+        if (response.ok) {
+          dispatch(setLogin(true));
+        } else {
+          dispatch(setLogin(false));
         }
       } catch (error) {
         console.error('Error checking session:', error);
@@ -35,7 +28,7 @@ function Header() {
     };
 
     checkSession();
-  }, [dispatch]);
+  }, []);
 
   const handleLoginClick = async (e) => {
     e.preventDefault();
@@ -43,7 +36,7 @@ function Header() {
       try {
         const API_URL = import.meta.env.VITE_API_KEY;
         const response = await fetch(`${API_URL}/logout`, {
-          method: 'POST', 
+          method: 'POST',
           credentials: 'include',
         });
         if (response.ok) {
