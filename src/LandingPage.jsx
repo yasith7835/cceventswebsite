@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice'; // Assuming this is your Redux action
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import SelectUser from './SelectUser.jsx'; // Assuming this is where you select user type
-import TicketPurchasing from './TicketPurchasing.jsx'; // Assuming this is your ticket purchasing component
 
 function LandingPage() {
   const login = useSelector((state) => state.user.login);
