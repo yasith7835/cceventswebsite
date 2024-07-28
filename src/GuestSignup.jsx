@@ -73,9 +73,13 @@ function GuestSignUp() {
     }
   }
 
+  const handleBackButton = () => {
+    dispatch(setCurrentPage('guestLogin'));
+  };
+
   return (
     <>
-      <button>Back</button>
+      <button onClick={handleBackButton}>Back</button>
       <h3>Sign Up</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="first_name">First Name:</label>

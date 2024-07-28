@@ -4,7 +4,7 @@ import { setLogin, setCurrentPage } from './userSlice';
 import Footer from './Footer.jsx';
 import "./css/Modal.css";
 
-function Login() {
+function StudentLogin() {
     const [studentId, setStudentId] = useState("");
     const [password, setPassword] = useState("");
     const [modal, setModal] = useState(false);
@@ -47,6 +47,10 @@ function Login() {
 
     const handleCreateAccountClick = () => {
         dispatch(setCurrentPage('studentSignup'));
+    };
+
+    const handleBackButton = () => {
+        dispatch(setCurrentPage('selectUser'));
     };
 
     const handleGetOtpClick = async (e) => {
@@ -160,8 +164,8 @@ function Login() {
 
     return (
         <>
-            <button>Back</button>
-            <h3>Login</h3>
+            <button onClick={handleBackButton}>Back</button>
+            <h3>Student Login</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="studentId">StudentId:</label>
                 <input
@@ -265,4 +269,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default StudentLogin;
