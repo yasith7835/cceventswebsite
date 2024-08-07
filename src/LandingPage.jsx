@@ -10,10 +10,8 @@ function LandingPage() {
 
   const handleBuyNowClick = () => {
     if (!login) {
-      
       dispatch(setCurrentPage('selectUser'));
     } else {
-      
       dispatch(setCurrentPage('ticketPurchasing'));
     }
   };

@@ -8,6 +8,7 @@ import GuestSignup from './GuestSignup.jsx';
 import TicketPurchasing from './TicketPurchasing.jsx';
 import SelectUser from './SelectUser.jsx';
 import QrPage from './QrPage.jsx'; 
+import ProfilePage from './ProfilePage.jsx';
 
 function App() {
   const currentPage = useSelector((state) => state.user.currentPage);
@@ -31,6 +32,8 @@ function App() {
         return <SelectUser />;
       case 'qrpage':
         return <QrPage />;
+      case 'profilePage':
+        return <ProfilePage />
       default:
         return <LandingPage />;
     }

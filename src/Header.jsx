@@ -54,9 +54,19 @@ function Header() {
     }
   };
 
+  const handleProfileClick = () => {
+    dispatch(setCurrentPage('profilePage'));
+  };
+  
+
   return (
     <div className="header">
       <p>Header</p>
+      {login ? (
+        <button onClick={handleProfileClick}>Profile</button>
+      ) : (
+        <button onClick={handleLoginClick}>Profile</button>
+      )}
       {login ? (
         <button onClick={handleLoginClick}>Logout</button>
       ) : (
