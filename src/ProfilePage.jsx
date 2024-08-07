@@ -78,7 +78,7 @@ function ProfilePage() {
           <p><strong>Email:</strong> {profile.email}</p>
           {codes.regular_code ? (
             <div>
-              <p>You currently have <strong>{profile.n_tickets_bought}</strong> regular tickets</p>
+              <p>You currently have <strong>{profile.n_tickets_bought}</strong> regular tickets.</p>
               <div ref={regularQrRef}>
                 <QRCode value={codes.regular_code} />
               </div>
