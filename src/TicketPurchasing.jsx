@@ -91,7 +91,7 @@ function TicketPurchasing() {
     payhere.startPayment(payment);
   };
 
-  // Handle form submission
+  
   const handleSubmit = async (e) => {
     e.preventDefault(); // Avoid page reload
     const data = await fetchPaymentData(); // Fetch payment data after form submission
