@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from './Footer.jsx';
 const API_URL = import.meta.env.VITE_API_KEY;
 import { useDispatch } from 'react-redux';
@@ -10,6 +10,7 @@ function TicketPurchasing() {
   const [ticketType, setTicketType] = useState('');
   const [total, setTotal] = useState(0);
   const [modal, setModal] = useState(true);// Modal is visible as default
+  const [paymentData, setPaymentData] = useState(null);
   const dispatch = useDispatch();
 
   const calculateTotalPrice = (ntickets, ticketType) => {
@@ -21,17 +22,36 @@ function TicketPurchasing() {
     setTotal(totalPrice);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Avoid page reload
+  // Load the PayHere script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://www.payhere.lk/lib/payhere.js";
+    script.async = true;
+    document.body.appendChild(script);
 
+    script.onload = () => {
+      console.log('PayHere script loaded successfully.');
+    };
+
+    script.onerror = () => {
+      console.error('Failed to load PayHere script.');
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  // Fetch payment data from the backend
+  const fetchPaymentData = async () => {
     try {
-      const response = await fetch(`${API_URL}/purchase`, {
+      const response = await fetch(`${API_URL}/payhere`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: JSON.stringify({ ntickets }),
+        body: JSON.stringify({ ntickets, ticketType }),
       });
 
       if (response.status === 200) {
@@ -50,7 +70,7 @@ function TicketPurchasing() {
         alert(result.error);
       }
     } catch (error) {
-      console.error('Error: Payment unsuccessful', error);
+      console.error('Error fetching payment data:', error);
     }
   };
 
