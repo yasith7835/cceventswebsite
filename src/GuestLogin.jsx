@@ -30,14 +30,17 @@ function GuestLogin() {
                 credentials: 'include',
                 body: JSON.stringify({
                   user_id: guestId,
-                  password: password
+                  password: password,
+                  user_type: "guest"
                 }),
               });
             const loginData = await response.json();
-            alert(loginData.message);
             if(response.ok){            
                 dispatch(setLogin(true)); 
                 dispatch(setCurrentPage('landing'));
+            }
+            else {
+                alert(loginData.message);
             }
         }catch(error){
             console.error(error);

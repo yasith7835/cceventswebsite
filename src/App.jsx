@@ -7,7 +7,7 @@ import StudentSignup from './StudentSignup.jsx';
 import GuestSignup from './GuestSignup.jsx';
 import TicketPurchasing from './TicketPurchasing.jsx';
 import SelectUser from './SelectUser.jsx';
-import QrPage from './QrPage.jsx'; 
+import PaymentSuccessful from './PaymentSuccessful.jsx'; 
 import ProfilePage from './ProfilePage.jsx';
 
 function App() {
@@ -30,8 +30,8 @@ function App() {
         return <TicketPurchasing />;
       case 'selectUser':
         return <SelectUser />;
-      case 'qrpage':
-        return <QrPage />;
+      case 'paymentSuccessful':
+        return <PaymentSuccessful />;
       case 'profilePage':
         return <ProfilePage />
       default:
@@ -42,8 +42,6 @@ function App() {
   return (
     <>
       {renderPage()}
-     
-
     </>
   );
 }
