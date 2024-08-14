@@ -30,14 +30,17 @@ function StudentLogin() {
                 credentials: 'include',
                 body: JSON.stringify({
                     user_id: studentId,
-                    password: password
+                    password: password,
+                    user_type: "student"
                 }),
             });
             const loginData = await response.json();
-            alert(loginData.message);
             if (response.ok) {
                 dispatch(setLogin(true));
                 dispatch(setCurrentPage('landing'));
+            }
+            else {
+                alert(loginData.message);
             }
         } catch (error) {
             console.error(error);
