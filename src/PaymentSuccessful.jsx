@@ -59,7 +59,11 @@ const PaymentSuccessful = () => {
     dispatch(setCurrentPage('landing')); // Navigate back to the landing page
   };
 
-  var end = Date.now() + (15 * 1000);
+  const handleProfileButtonClick = () => {
+    dispatch(setCurrentPage('profilePage')); // Navigate to the profile page
+  };
+
+var end = Date.now() + (15 * 1000);
 
 // go Buckeyes!
 var colors = ['#cc9900', '#ffffff'];
@@ -119,6 +123,7 @@ fire(0.1, {
             <QRCode value={codes.regular_code} />
           </div>
           <button onClick={() => downloadQR(codes.regular_code, regularQrRef)}>Download Regular QR Code</button>
+          <button onClick={handleProfileButtonClick}>Go to My Profile</button>
           <button onClick={handleDoneButton}>Done!</button>
         </div>
       )}
