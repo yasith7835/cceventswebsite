@@ -68,18 +68,12 @@ function ProfilePage() {
     downloadLink.click();
   };
 
-  const handleBackButton = () => {
-    dispatch(setCurrentPage('landing')); // Navigate back to the landing page
-  };
-
   return (
     <>
-      <Header />
+      { Header('back', null, 'landing') }
       <div className="profile-bg-image" />
       <div className="landing-bg-overlay"/>
       <br /><br /><br /> {/* FIXME: */}
-
-      <button onClick={handleBackButton}>Back</button>
       <br /><br />
 
       {profile ? (

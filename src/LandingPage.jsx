@@ -28,7 +28,7 @@ function LandingPage() {
       <div className="landing-bg-image"/>
       <div className="landing-bg-overlay"/>
 
-      { heroSection() }
+      { heroSection(handleBuyNowClick) }
       { eventInfo() }
       { artistsLineup() }
       { venueSection() }
@@ -51,7 +51,7 @@ function moreInfoClicked() {
 }
 
 
-function heroSection() {
+function heroSection(handleBuyNowClick) {
 
   return (
     <div className="landing-main-section">
@@ -64,7 +64,7 @@ function heroSection() {
       </p>
 
       <div className="landing-button-container">
-        <button className="landing-button">Buy Now</button>
+        <button className="landing-button" onClick={handleBuyNowClick}>Buy Now</button>
         <button className="landing-button second" onClick={moreInfoClicked}>More Info</button>
       </div>
 
