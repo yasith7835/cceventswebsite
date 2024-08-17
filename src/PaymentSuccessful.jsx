@@ -4,6 +4,13 @@ const API_URL = import.meta.env.VITE_API_KEY;
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice';
 
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+import './css/PaymentSuccessful.css';
+
+import confetti from 'canvas-confetti';
+
+
 const PaymentSuccessful = () => {
   const regularQrRef = useRef();
   const [codes, setCodes] = useState({});
@@ -52,8 +59,58 @@ const PaymentSuccessful = () => {
     dispatch(setCurrentPage('landing')); // Navigate back to the landing page
   };
 
+  var end = Date.now() + (15 * 1000);
+
+// go Buckeyes!
+var colors = ['#cc9900', '#ffffff'];
+
+
+var count = 200;
+var defaults = {
+  origin: { y: 0.7 }
+};
+
+function fire(particleRatio, opts) {
+  confetti({
+    ...defaults,
+    ...opts,
+    particleCount: Math.floor(count * particleRatio)
+  });
+}
+
+fire(0.25, {
+  spread: 26,
+  startVelocity: 55,
+});
+fire(0.2, {
+  spread: 60,
+});
+fire(0.35, {
+  spread: 100,
+  decay: 0.91,
+  scalar: 0.8
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 25,
+  decay: 0.92,
+  scalar: 1.2
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 45,
+});
+
+
+
+
   return (
     <div>
+      {Header('back', null, 'landing')}
+      <div className="bg-image-guest-login" />
+      <div className="bg-overlay" />
+      <br /><br /><br /><br /> {/* FIXME: */}
+
       <h1>Your payment was successful!</h1>
       {codes.regular_code && (
         <div>
