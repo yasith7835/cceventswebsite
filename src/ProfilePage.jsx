@@ -2,7 +2,12 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice';
 import QRCode from 'qrcode.react';
+import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+
+import './css/App.css';
+import './css/ProfilePage.css';
+
 const API_URL = import.meta.env.VITE_API_KEY;
 
 function ProfilePage() {
@@ -69,25 +74,66 @@ function ProfilePage() {
 
   return (
     <>
+      <Header />
+      <div className="profile-bg-image" />
+      <div className="landing-bg-overlay"/>
+      <br /><br /><br /> {/* FIXME: */}
+
       <button onClick={handleBackButton}>Back</button>
+      <br /><br />
+
       {profile ? (
-        <div>
-          <h2>Hello {profile.first_name} {profile.last_name}!</h2>
-          <p><strong>User ID:</strong> {profile.user_id}</p>
-          <p><strong>Phone:</strong> {profile.phone}</p>
-          <p><strong>Email:</strong> {profile.email}</p>
-          {codes.regular_code ? (
-            <div>
-              <p>You currently have <strong>{profile.n_tickets_bought}</strong> regular tickets.</p>
-              <div ref={regularQrRef}>
-                <QRCode value={codes.regular_code} />
+        <div className='section-container section-padding'>
+
+          <h2 className="title-user-name">Hello {profile.first_name} {profile.last_name}!</h2>
+          <div className="info-card">
+
+            <p className='profile-info-title'>User ID:</p>
+            <p className='profile-info-detail'>{profile.user_id}</p>
+            <br />
+
+            <p className='profile-info-title'>Phone:</p>
+            <p className='profile-info-detail'>{profile.phone}</p>
+            <br />
+
+            <p className='profile-info-title'>Email:</p>
+            <p className='profile-info-detail'>{profile.email}</p>
+              
+            <br />
+
+            <p className='profile-info-title'>Tickets:</p>
+            { codes.regular_code ? (
+              <>
+              <div className='profile-info-detail'>
+              <br />
+                <div className='center-container' ref={regularQrRef}>
+                  <QRCode value={codes.regular_code} />
+                </div>
+                <br />
+              <p style={{ textAlign: "center" }}>
+                You currently have <strong>{profile.n_tickets_bought}</strong> regular tickets.
+              </p>
+              <br />
+              <div className='center-container'>
+                <button style={{
+                  padding: "1rem",
+                  borderRadius: "10px",
+                  background: "rgba(0, 0, 0, 0)",
+                  color: "var(--color-gold)",
+                  border: "2px solid var(--color-gold)",
+                  }}
+                  onClick={() => downloadQR(codes.regular_code, regularQrRef)}>Download QR Code</button>
               </div>
-              <button onClick={() => downloadQR(codes.regular_code, regularQrRef)}>Download QR Code</button>
-            </div>
-          ) : (
-            <p>You have no purchased tickets.</p>
-          )}
+              <br />
+              </div>
+              </>
+            ) : (
+              <p className='profile-info-detail'>You have no purchased tickets.</p>
+            )}
+          </div>
         </div>
+
+
       ) : (
         <p>Loading profile data...</p>
       )}

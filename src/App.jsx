@@ -9,12 +9,14 @@ import TicketPurchasing from './TicketPurchasing.jsx';
 import SelectUser from './SelectUser.jsx';
 import PaymentSuccessful from './PaymentSuccessful.jsx'; 
 import ProfilePage from './ProfilePage.jsx';
+import './css/App.css'
 
 function App() {
   const currentPage = useSelector((state) => state.user.currentPage);
 
   // Render the component based on currentPage
   const renderPage = () => {
+
     switch (currentPage) {
       case 'landing':
         return <LandingPage />;

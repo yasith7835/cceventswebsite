@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --color-gold: #cc9900;
+  --color-btn: white;
+  --svg-icon-size: 1.6rem;
+  --header-height: 2.8rem;
+  --header-padding-topbot: .5rem;
+  --header-bg: rgba(0, 0, 0, .5);
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  /* font-family: "Sunflower", sans-serif; */
+  letter-spacing: .2rem;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+  position: relative;
+  background-color: black; 
+  color: white;
+}
+
+
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.section-container {
+  width: 100%;
+}
+
+.section-padding {
+  padding: 0 2rem;
+}
+
+.section-margin-top {
+  margin-top: 4rem;
+}
+
+/* Margins to add in the class name list */
+.mt-1 { margin-top: 2rem; }
+.mt-2 { margin-top: 4rem; }
+.mb-1 { margin-bottom: 2rem; }
+.mb-2 { margin-bottom: 4rem; }
+
+.icon-svg {
+  height: var(--svg-icon-size);
+  width: var(--svg-icon-size);
+}
+
+.section-heading {
+  font-size: 2rem;
+  color: var(--color-gold);
+  margin: 2rem 0rem;
+}
+
