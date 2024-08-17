@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin, setCurrentPage } from './userSlice';
+
+import './css/GuestLogin.css';
+import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+
 import "./css/Modal.css";
 
 function GuestLogin() {
@@ -19,30 +23,30 @@ function GuestLogin() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Logging in...'); 
-        try{
+        console.log('Logging in...');
+        try {
             const API_URL = import.meta.env.VITE_API_KEY;
             const response = await fetch(`${API_URL}/login`, {
-                method: 'POST', 
+                method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 credentials: 'include',
                 body: JSON.stringify({
-                  user_id: guestId,
-                  password: password,
-                  user_type: "guest"
+                    user_id: guestId,
+                    password: password,
+                    user_type: "guest"
                 }),
-              });
+            });
             const loginData = await response.json();
-            if(response.ok){            
-                dispatch(setLogin(true)); 
+            if (response.ok) {
+                dispatch(setLogin(true));
                 dispatch(setCurrentPage('landing'));
             }
             else {
                 alert(loginData.message);
             }
-        }catch(error){
+        } catch (error) {
             console.error(error);
             alert("Error: " + error.message);
         }
@@ -50,10 +54,6 @@ function GuestLogin() {
 
     const handleCreateAccountClick = () => {
         dispatch(setCurrentPage('guestSignup'));
-    };
-
-    const handleBackButton = () => {
-        dispatch(setCurrentPage('selectUser'));
     };
 
     const handleGetOtpClick = async (e) => {
@@ -167,35 +167,58 @@ function GuestLogin() {
 
     return (
         <>
-            <button onClick={handleBackButton}>Back</button>
-            <h3>Guest Login</h3>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="guestId">NIC:</label>
-                <input
-                    type="text"
-                    id="guestId"
-                    name="guestId"
-                    required
-                    value={guestId}
-                    onChange={(e) => setGuestId(e.target.value)}
-                />
+            {Header('back', null, 'selectUser')}
+            <div className="bg-image-guest-login" />
+            <div className="bg-overlay" />
+            <br /><br /><br /><br /> {/* FIXME: */}
 
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+            <div className='section-container section-padding'>
+                <h2 className="title-user-name">Guest Login</h2>
+                <div className="info-card">
 
-                <input type="submit" value="Login" />
-            </form>
+                    <form onSubmit={handleSubmit}>
+                        <p className="profile-info-title">NIC:</p>
+                        <input
+                            className='profile-info-detail'
+                            type="text"
+                            id="guestId"
+                            name="guestId"
+                            required
+                            value={guestId}
+                            onChange={(e) => setGuestId(e.target.value)}
+                        />
+                        <br />
+                        <br />
 
-            <label>Don't have an account yet?</label>
-            <button onClick={handleCreateAccountClick}>Create One</button>
-            <button onClick={toggleModal} className="btn-modal">Forgot Password?</button>
+                        <p className="profile-info-title">Password:</p>
+                        <input
+                            className='profile-info-detail'
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <br /><br />
+
+                        <input
+                            className='landing-button'
+                            style={{ width: "100%" }}
+                            type="submit" value="Login" />
+                    </form>
+
+                    <br />
+                    <p className='fade-text'>Don't have an account yet?</p>
+                    <div className='fade-text hyper-link-button-container'>
+                        <p className='hyper-link-button' onClick={handleCreateAccountClick}>Create One</p>
+                        <p className='hyper-link-button btn-modal' onClick={toggleModal}>Forgot Password?</p>
+                    </div>
+
+                </div>
+
+            </div>
+
 
             {modal && (
                 <div className="modal">

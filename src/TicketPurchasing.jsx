@@ -70,10 +70,6 @@ function TicketPurchasing() {
       document.body.classList.remove('active-modal')
   }
 
-  const handleBackButton = () => {
-    dispatch(setCurrentPage('landing')); // Navigate back to the landing page
-  };
-
   return (
     <>
     { Header('back', null, 'landing') }
