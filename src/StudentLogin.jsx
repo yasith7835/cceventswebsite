@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin, setCurrentPage } from './userSlice';
+
+import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+
 import "./css/Modal.css";
+import "./css/StudentLogin.css";
 
 function StudentLogin() {
     const [studentId, setStudentId] = useState("");
@@ -50,10 +54,6 @@ function StudentLogin() {
 
     const handleCreateAccountClick = () => {
         dispatch(setCurrentPage('studentSignup'));
-    };
-
-    const handleBackButton = () => {
-        dispatch(setCurrentPage('selectUser'));
     };
 
     const handleGetOtpClick = async (e) => {
@@ -167,35 +167,65 @@ function StudentLogin() {
 
     return (
         <>
-            <button onClick={handleBackButton}>Back</button>
-            <h3>Student Login</h3>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="studentId">StudentId:</label>
-                <input
-                    type="text"
-                    id="studentId"
-                    name="studentID"
-                    required
-                    value={studentId}
-                    onChange={(e) => setStudentId(e.target.value)}
-                />
 
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+            {Header('back', null, 'selectUser')}
+            <div className="bg-image-student-login" />
+            <div className="bg-overlay" />
+            <br /><br /><br /><br /> {/* FIXME: */}
 
-                <button type="submit" value="Login">Login</button>
-            </form>
 
-            <label>Don't have an account yet?</label>
-            <button onClick={handleCreateAccountClick}>Create One</button>
-            <button onClick={toggleModal} className="btn-modal">Forgot Password?</button>
+            <br />
+            <div className='section-container section-padding'>
+                <h2 className="title-user-name">Student Login</h2>
+
+                <div className="info-card">
+                    <form onSubmit={handleSubmit}>
+                        <p className='profile-info-title'>Student ID:</p>
+                        <input
+                            className='profile-info-detail'
+                            type="text"
+                            id="studentId"
+                            name="studentID"
+                            required
+                            value={studentId}
+                            onChange={(e) => setStudentId(e.target.value)}
+                        />
+                        <br />
+                        <br />
+
+                        <p className='profile-info-title'>Password:</p>
+                        <input
+                            className='profile-info-detail'
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <br /><br />
+
+                        <button
+                            className='landing-button'
+                            style={{ width: "100%" }}
+                            type="submit"
+                            value="Login"
+                        >
+                            Login
+                        </button>
+                    </form>
+
+                    <br />
+
+                    <p className='fade-text'>Don't have an account yet?</p>
+                    <div className='fade-text hyper-link-button-container'>
+                        <p className='hyper-link-button' onClick={handleCreateAccountClick}>Create One</p>
+                        <p className='hyper-link-button btn-modal' onClick={toggleModal}>Forgot Password?</p>
+                    </div>
+                </div>
+
+
+            </div>
 
             {modal && (
                 <div className="modal">
