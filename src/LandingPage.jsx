@@ -24,7 +24,7 @@ function LandingPage() {
   return (
     <>
       {/* The background image that covers the entire page. */}
-      <Header/>
+      { Header('profile', 'loginout') }
       <div className="landing-bg-image"/>
       <div className="landing-bg-overlay"/>
 

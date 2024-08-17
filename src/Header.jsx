@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setLogin, setCurrentPage } from './userSlice'; // Assuming these are your Redux actions
 import './css/Header.css'
 
-function Header() {
+function Header(left=null, right=null, back_location='') {
+
   const login = useSelector((state) => state.user.login);
   const dispatch = useDispatch();
 
@@ -58,11 +59,57 @@ function Header() {
   const handleProfileClick = () => {
     dispatch(setCurrentPage('profilePage'));
   };
-  
+
+
+  let fn = {
+    login: login,
+    handleLoginClick: handleLoginClick,
+    handleProfileClick: handleProfileClick,
+    dispatch: dispatch,
+    setCurrentPage: setCurrentPage,
+  };
 
   return (
     <div className="header">
 
+      {getElement(left, fn, back_location)}
+      <img src="/src/img/logo-header.png"/>
+      {getElement(right, fn, back_location)}
+
+    </div>
+  );
+}
+
+
+function getElement(name, fn, back_location) {
+  const handleBackButton = () => { fn.dispatch(fn.setCurrentPage(back_location)); };
+
+  if (name == 'profile') return profile(fn.login, fn.handleLoginClick, fn.handleProfileClick);
+  if (name == 'loginout') return loginout(fn.login, fn.handleLoginClick);
+  if (name == 'back') return back(handleBackButton, fn.dispatch, fn.setCurrentPage);
+  return empty();
+}
+
+
+function empty() {
+  return (
+    <div>
+    </div>
+  );
+}
+
+function back(handleBackButton) {
+  return (
+    <div className="icon-svg" onClick={handleBackButton}>
+<svg viewBox="0 0 1024 1024" fill="#fff" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#fff" stroke-width="45.056"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M669.6 849.6c8.8 8 22.4 7.2 30.4-1.6s7.2-22.4-1.6-30.4l-309.6-280c-8-7.2-8-17.6 0-24.8l309.6-270.4c8.8-8 9.6-21.6 2.4-30.4-8-8.8-21.6-9.6-30.4-2.4L360.8 480.8c-27.2 24-28 64-0.8 88.8l309.6 280z" fill=""></path></g></svg>
+    </div>
+  );
+}
+
+
+function profile(login, handleLoginClick, handleProfileClick) {
+  return (
+    <>
       {/* TODO: Currently using the same logo for login and logout, need to handle this properly. */}
       {login ? (
         <div className="center-container" onClick={handleProfileClick}>
@@ -81,9 +128,14 @@ function Header() {
           </div>
         </div>
       )}
+    </>
+  );
+}
 
-      <img src="/src/img/logo-header.png"/>
 
+function loginout(login, handleLoginClick) {
+  return (
+    <>
       <div className="center-container" onClick={handleLoginClick}>
 
         {login ? (
@@ -103,8 +155,7 @@ function Header() {
         )}
 
       </div>
-
-    </div>
+    </>
   );
 }
 
