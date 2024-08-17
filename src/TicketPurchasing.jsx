@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import Footer from './Footer.jsx';
+
 const API_URL = import.meta.env.VITE_API_KEY;
+
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice';
+
 import "./css/Modal.css";
+import './css/TicketPurchasing.css';
 
 function TicketPurchasing() {
   const [ntickets, setNTickets] = useState(0);
@@ -70,11 +76,21 @@ function TicketPurchasing() {
 
   return (
     <>
-      <button onClick={handleBackButton}>Back</button>
-      <h3>Tickets</h3>
+    { Header('back', null, 'landing') }
+
+    <div className="bg-image" />
+    <div className="bg-overlay"/>
+    {/* FIXME: */}
+    <br /><br /><br /><br />
+
+    <div className='section-container section-padding'>
+      <h2 className="title-user-name">Tickets</h2>
+
+      <div className="info-card">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="seatType">Seat Type:</label>
+      <p className='profile-info-title'>Seat Type:</p>
         <select
+          className='profile-info-detail'
           id="seatType"
           name="seatType"
           required
@@ -87,33 +103,54 @@ function TicketPurchasing() {
           <option value="vip">VIP</option>
           <option value="regular">Regular</option>
         </select>
+      <br /><br />
 
         {ticketType === "vip" ? (
           <div>
-            <h4>Contact Event Organizers</h4>
-            <p>Achira Senanayake</p>
-            <p>Phone: +94 77 670 5646</p>
-            <p>Email: something@example.com</p>
+            <p className='profile-info-title'>Contact Event Organizers</p>
+            <p className='profile-info-detail'>
+              Name: Lishan Hettipathirana<br/>
+              Phone: +94 76 325 7943<br/>
+              <br />
+              Name: Jaden Christy<br/>
+              Phone: +94 71 081 9950<br/>
+              <br />
+              <p>curtincolombo.eventsteam@gmail.com</p>
+            </p>
+
+
           </div>
         ) : (
           <>
-            <label htmlFor="numTickets">Number of Tickets:</label>
+            <p className='profile-info-title'>Number of Tickets:</p>
             <input
+              className='profile-info-detail'
               type="number"
               id="numTickets"
               name="numTickets"
               required
               min="1"
+              max="10"
               onChange={(e) => {
                 setNTickets(e.target.value);
                 calculateTotalPrice(e.target.value, ticketType);
               }}
             />
-            <label>Total: Rs.{total}</label>
-            <input type="submit" value="Checkout" />
+            <br />
+            <br />
+            <p className='profile-info-title'>Total: Rs. {total || 0}</p>
+            <br />
+            <div className="center-container">
+            <input className='landing-button' type="submit" value="Checkout" />
+            </div>
           </>
         )}
       </form>
+      </div>
+
+    </div>
+
+
 
       {modal && (
         <div className="modal">
@@ -128,7 +165,10 @@ function TicketPurchasing() {
               <li>Tickets cannot be resold at any given time.</li>
             </ul>
             <p>For more details, please read the Conditions and Privacy Policy mentioned below.</p>
-            <button className="close-modal" onClick={toggleModal}>CLOSE</button>
+
+            <div className="close-modal" onClick={toggleModal}>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Close_MD"> <path id="Vector" d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+            </div>
           </div>
         </div>
       )}

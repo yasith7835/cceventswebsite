@@ -18,10 +18,6 @@ function SelectUser() {
     dispatch(setCurrentPage('guestLogin')); 
   };
 
-  const handleBackButton = () => {
-    dispatch(setCurrentPage('landing'));
-  };
-
   return (
     <>
       <div className="user-select-bg-img"/>
