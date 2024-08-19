@@ -4,6 +4,7 @@ import { setLogin, setCurrentPage } from './userSlice';
 
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { PageBgImage } from './elems.jsx';
 
 import "./css/Modal.css";
 import "./css/StudentLogin.css";
@@ -168,21 +169,19 @@ function StudentLogin() {
     return (
         <>
 
-            {Header('back', null, 'selectUser')}
-            <div className="bg-image-student-login" />
-            <div className="bg-overlay" />
+            { Header('back', null, 'selectUser') }
+            { PageBgImage('/src/img/download.avif', 'center') }
             <br /><br /><br /><br /> {/* FIXME: */}
-
 
             <br />
             <div className='section-container section-padding'>
-                <h2 className="title-user-name">Student Login</h2>
+                <h2 className="info-card-title">Student Login</h2>
 
                 <div className="info-card">
                     <form onSubmit={handleSubmit}>
-                        <p className='profile-info-title'>Student ID:</p>
+                        <p className='info-card-label'>Student ID:</p>
                         <input
-                            className='profile-info-detail'
+                            className="info-card-item"
                             type="text"
                             id="studentId"
                             name="studentID"
@@ -193,9 +192,9 @@ function StudentLogin() {
                         <br />
                         <br />
 
-                        <p className='profile-info-title'>Password:</p>
+                        <p className="info-card-label">Password:</p>
                         <input
-                            className='profile-info-detail'
+                            className="info-card-item"
                             type="password"
                             id="password"
                             name="password"
@@ -206,7 +205,7 @@ function StudentLogin() {
                         <br /><br />
 
                         <button
-                            className='landing-button'
+                            className="landing-button"
                             style={{ width: "100%" }}
                             type="submit"
                             value="Login"

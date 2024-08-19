@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLogin, setCurrentPage } from './userSlice';
 
-import './css/GuestLogin.css';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { PageBgImage } from './elems.jsx';
 
+import './css/GuestLogin.css';
 import "./css/Modal.css";
+
 
 function GuestLogin() {
     const [guestId, setGuestId] = useState("");
@@ -167,19 +169,18 @@ function GuestLogin() {
 
     return (
         <>
-            {Header('back', null, 'selectUser')}
-            <div className="bg-image-guest-login" />
-            <div className="bg-overlay" />
+            { Header('back', null, 'selectUser') }
+            { PageBgImage('/src/img/download.avif', 'center') }
             <br /><br /><br /><br /> {/* FIXME: */}
 
             <div className='section-container section-padding'>
-                <h2 className="title-user-name">Guest Login</h2>
+                <h2 className="info-card-title">Guest Login</h2>
                 <div className="info-card">
 
                     <form onSubmit={handleSubmit}>
-                        <p className="profile-info-title">NIC:</p>
+                        <p className="info-card-label">NIC:</p>
                         <input
-                            className='profile-info-detail'
+                            className="info-card-item"
                             type="text"
                             id="guestId"
                             name="guestId"
@@ -190,9 +191,9 @@ function GuestLogin() {
                         <br />
                         <br />
 
-                        <p className="profile-info-title">Password:</p>
+                        <p className="info-card-label">Password:</p>
                         <input
-                            className='profile-info-detail'
+                            className="info-card-item"
                             type="password"
                             id="password"
                             name="password"
@@ -203,7 +204,7 @@ function GuestLogin() {
                         <br /><br />
 
                         <input
-                            className='landing-button'
+                            className="landing-button"
                             style={{ width: "100%" }}
                             type="submit" value="Login" />
                     </form>

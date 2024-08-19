@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice'; // Assuming this is your Redux action
+
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { PageBgImage } from './elems.jsx';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -25,8 +27,7 @@ function LandingPage() {
     <>
       {/* The background image that covers the entire page. */}
       { Header('profile', 'loginout') }
-      <div className="landing-bg-image"/>
-      <div className="landing-bg-overlay"/>
+      { PageBgImage('/src/img/bg3.jpg') }
 
       { heroSection(handleBuyNowClick) }
       { eventInfo() }
@@ -237,7 +238,5 @@ function contactSection() {
   );
 
 }
-
-
 
 export default LandingPage;

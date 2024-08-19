@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice'; 
-import './css/SelectUser.css';
 
-import './css/LandingPage.css';
+import { PageBgImage } from './elems.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+
+import './css/SelectUser.css';
+
 
 function SelectUser() {
   const dispatch = useDispatch();
@@ -20,8 +22,9 @@ function SelectUser() {
 
   return (
     <>
-      <div className="user-select-bg-img"/>
       { Header('back', null, 'landing') }
+      { PageBgImage('/src/img/landing-bg-placeholder-3.jpg') }
+
     <div>
 
       {/* FIXME: */} 

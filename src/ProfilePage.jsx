@@ -1,18 +1,19 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice';
+
 import QRCode from 'qrcode.react';
+
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { PageBgImage } from './elems.jsx';
 
-import './css/App.css';
-import './css/ProfilePage.css';
 
 const API_URL = import.meta.env.VITE_API_KEY;
 
 function ProfilePage() {
   const regularQrRef = useRef();
-  const [profile, setProfile] = useState(null); // State to store profile data
+  let [profile, setProfile] = useState(null); // State to store profile data
   const [codes, setCodes] = useState({});
   const dispatch = useDispatch();
 
@@ -68,37 +69,50 @@ function ProfilePage() {
     downloadLink.click();
   };
 
+  // FIXME:
+  // This is just to debug and changed profile as let from const so I can set value here.
+  // remove them once finished debugging.
+  if (!profile) {
+    profile = {
+      first_name: "Thakee",
+      last_name: "Nathees",
+      user_id: "foobar123!@",
+      phone: "+94 12 123 1234",
+      email: "foo.bar@baz.com",
+    };
+  }
+
   return (
     <>
       { Header('back', null, 'landing') }
-      <div className="profile-bg-image" />
-      <div className="landing-bg-overlay"/>
+      { PageBgImage('/src/img/landing-bg-placeholder-2.jpg') }
+
       <br /><br /><br /> {/* FIXME: */}
       <br /><br />
 
       {profile ? (
         <div className='section-container section-padding'>
 
-          <h2 className="title-user-name">Hello {profile.first_name} {profile.last_name}!</h2>
+          <h2 className="info-card-title">Hello {profile.first_name} {profile.last_name}!</h2>
           <div className="info-card">
 
-            <p className='profile-info-title'>User ID:</p>
-            <p className='profile-info-detail'>{profile.user_id}</p>
+            <p className="info-card-label">User ID:</p>
+            <p className="info-card-item">{profile.user_id}</p>
             <br />
 
-            <p className='profile-info-title'>Phone:</p>
-            <p className='profile-info-detail'>{profile.phone}</p>
+            <p className="info-card-label">Phone:</p>
+            <p className="info-card-item">{profile.phone}</p>
             <br />
 
-            <p className='profile-info-title'>Email:</p>
-            <p className='profile-info-detail'>{profile.email}</p>
+            <p className="info-card-label">Email:</p>
+            <p className="info-card-item">{profile.email}</p>
               
             <br />
 
-            <p className='profile-info-title'>Tickets:</p>
+            <p className="info-card-label">Tickets:</p>
             { codes.regular_code ? (
               <>
-              <div className='profile-info-detail'>
+              <div className="info-card-item">
               <br />
                 <div className='center-container' ref={regularQrRef}>
                   <QRCode value={codes.regular_code} />
@@ -108,7 +122,7 @@ function ProfilePage() {
                 You currently have <strong>{profile.n_tickets_bought}</strong> regular tickets.
               </p>
               <br />
-              <div className='center-container'>
+              <div className="center-container">
                 <button style={{
                   padding: "1rem",
                   borderRadius: "10px",
@@ -122,7 +136,7 @@ function ProfilePage() {
               </div>
               </>
             ) : (
-              <p className='profile-info-detail'>You have no purchased tickets.</p>
+              <p className="info-card-item">You have no purchased tickets.</p>
             )}
           </div>
         </div>
