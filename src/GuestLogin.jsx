@@ -6,7 +6,6 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import { PageBgImage } from './elems.jsx';
 
-import './css/GuestLogin.css';
 import "./css/Modal.css";
 
 

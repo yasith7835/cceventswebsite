@@ -89,6 +89,20 @@ body {
   display: none;
 }
 
+.header {
+  position: absolute;
+  top:0;
+  width: 100%;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: var(--header-padding-topbot) .9rem;
+  background-color: var(--header-bg);
+}
+
 
 /* -------------------------------------------------------------------------- */
 /* Info sections. */
@@ -155,17 +169,25 @@ body {
 }
 
 
-.header {
-  position: absolute;
-  top:0;
-  width: 100%;
-  z-index: 1;
 
+/* -------------------------------------------------------------------------- */
+/* Login page things. */
+/* -------------------------------------------------------------------------- */
+
+
+.fade-text {
+  font-size: .8rem;
+  color: rgb(211, 209, 209);
+}
+
+
+.hyper-link-button-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+}
 
-  padding: var(--header-padding-topbot) .9rem;
-  background-color: var(--header-bg);
+
+.hyper-link-button {
+  text-decoration: underline;
 }
 
