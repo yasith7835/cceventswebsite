@@ -115,9 +115,8 @@ fire(0.1, {
   return (
     <div>
       { Header('back', null, 'landing') }
+      <div className="header-height"/>
       { PageBgImage() }
-
-      <br /><br /><br /><br /> {/* FIXME: */}
 
       <h1>Your payment was successful!</h1>
       {codes.regular_code && (

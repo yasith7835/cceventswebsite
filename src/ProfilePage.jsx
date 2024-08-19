@@ -85,10 +85,8 @@ function ProfilePage() {
   return (
     <>
       { Header('back', null, 'landing') }
+      <div className="header-height"/>
       { PageBgImage('/src/img/landing-bg-placeholder-2.jpg') }
-
-      <br /><br /><br /> {/* FIXME: */}
-      <br /><br />
 
       {profile ? (
         <div className='section-container section-padding'>
