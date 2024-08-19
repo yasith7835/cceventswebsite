@@ -1,15 +1,19 @@
 import React, { useRef, useEffect, useState } from 'react';
 import QRCode from 'qrcode.react';
-const API_URL = import.meta.env.VITE_API_KEY;
+
+
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice';
 
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import './css/PaymentSuccessful.css';
+import { PageBgImage } from './elems.jsx';
 
 import confetti from 'canvas-confetti';
 
+
+// FIXME: The environment variable name is mis leading (rename it).
+const API_URL = import.meta.env.VITE_API_KEY;
 
 const PaymentSuccessful = () => {
   const regularQrRef = useRef();
@@ -110,9 +114,9 @@ fire(0.1, {
 
   return (
     <div>
-      {Header('back', null, 'landing')}
-      <div className="bg-image-guest-login" />
-      <div className="bg-overlay" />
+      { Header('back', null, 'landing') }
+      { PageBgImage() }
+
       <br /><br /><br /><br /> {/* FIXME: */}
 
       <h1>Your payment was successful!</h1>
