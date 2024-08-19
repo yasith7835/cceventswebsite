@@ -7,7 +7,7 @@ import Footer from './Footer.jsx';
 import { PageBgImage } from './elems.jsx';
 
 import "./css/Modal.css";
-import "./css/StudentLogin.css";
+
 
 function StudentLogin() {
     const [studentId, setStudentId] = useState("");
