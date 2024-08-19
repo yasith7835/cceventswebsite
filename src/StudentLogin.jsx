@@ -168,10 +168,9 @@ function StudentLogin() {
 
     return (
         <>
-
             { Header('back', null, 'selectUser') }
+            <div className="header-height"/>
             { PageBgImage('/src/img/download.avif', 'center') }
-            <br /><br /><br /><br /> {/* FIXME: */}
 
             <br />
             <div className='section-container section-padding'>

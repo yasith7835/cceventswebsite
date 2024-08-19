@@ -169,8 +169,8 @@ function GuestLogin() {
     return (
         <>
             { Header('back', null, 'selectUser') }
+            <div className="header-height"/>
             { PageBgImage('/src/img/download.avif', 'center') }
-            <br /><br /><br /><br /> {/* FIXME: */}
 
             <div className='section-container section-padding'>
                 <h2 className="info-card-title">Guest Login</h2>

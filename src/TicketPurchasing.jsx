@@ -74,10 +74,8 @@ function TicketPurchasing() {
   return (
     <>
     { Header('back', null, 'landing') }
+    <div className="header-height"/>
     { PageBgImage('/src/img/download.avif', 'center') }
-
-    {/* FIXME: */}
-    <br /><br /><br /><br />
 
     <div className='section-container section-padding'>
       <h2 className="info-card-title">Tickets</h2>
