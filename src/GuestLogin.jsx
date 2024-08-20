@@ -167,12 +167,13 @@ function GuestLogin() {
     }
 
     return (
-        <>
+        <div style={{ minHeight: "100vh" }}>
             { Header('back', null, 'selectUser') }
             <div className="header-height"/>
             { PageBgImage('/src/img/download.avif', 'center') }
 
-            <div className='section-container section-padding'>
+            <div className='section-container section-padding center-container'>
+              <div className="max-width-container">
                 <h2 className="info-card-title">Guest Login</h2>
                 <div className="info-card">
 
@@ -217,6 +218,7 @@ function GuestLogin() {
 
                 </div>
 
+              </div>
             </div>
 
 
@@ -291,7 +293,7 @@ function GuestLogin() {
                 </div>
             )}
             <Footer />
-        </>
+        </div>
     );
 }
 

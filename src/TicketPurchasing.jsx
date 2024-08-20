@@ -72,7 +72,7 @@ function TicketPurchasing() {
   }
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
     { Header('back', null, 'landing') }
     <div className="header-height"/>
     { PageBgImage('/src/img/download.avif', 'center') }
@@ -167,7 +167,7 @@ function TicketPurchasing() {
         </div>
       )}
       <Footer />
-    </>
+    </div>
   );
 }
 

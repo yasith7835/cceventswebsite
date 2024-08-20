@@ -10,9 +10,15 @@
   --color-gold: #cc9900;
   --color-btn: white;
   --svg-icon-size: 1.6rem;
+
+  --max-width: 50rem;
+
   --header-height: 2.8rem;
   --header-padding-topbot: .5rem;
+  --header-full-height: calc(var(--header-height) + 2 * var(--header-padding-topbot));
   --header-bg: rgba(0, 0, 0, .5);
+
+  --footer-height: 8rem;
 }
 
 
@@ -35,6 +41,7 @@ body {
   position: relative;
   background-color: black; 
   color: white;
+  min-height: calc(100vh - var(--header-full-height) - var(--footer-height));
 }
 
 
@@ -117,6 +124,10 @@ body {
 /* -------------------------------------------------------------------------- */
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  height: var(--footer-height);
+  width: 100%;
 }
 
 
@@ -205,5 +216,10 @@ body {
 
 .hyper-link-button {
   text-decoration: underline;
+}
+
+
+.max-width-container {
+  width: min(100%, var(--max-width));
 }
 

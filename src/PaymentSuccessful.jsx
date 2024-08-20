@@ -113,7 +113,7 @@ fire(0.1, {
 
 
   return (
-    <div>
+    <div style={{ minHeight: "100vh" }}>
       { Header('back', null, 'landing') }
       <div className="header-height"/>
       { PageBgImage() }
