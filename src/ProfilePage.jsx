@@ -83,13 +83,15 @@ function ProfilePage() {
   }
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
+
       { Header('back', null, 'landing') }
       <div className="header-height"/>
       { PageBgImage('/src/img/landing-bg-placeholder-2.jpg') }
 
       {profile ? (
-        <div className='section-container section-padding'>
+        <div className='section-container section-padding center-container'>
+          <div className="max-width-container">
 
           <h2 className="info-card-title">Hello {profile.first_name} {profile.last_name}!</h2>
           <div className="info-card">
@@ -136,6 +138,8 @@ function ProfilePage() {
             ) : (
               <p className="info-card-item">You have no purchased tickets.</p>
             )}
+
+            </div>
           </div>
         </div>
 
@@ -144,7 +148,7 @@ function ProfilePage() {
         <p>Loading profile data...</p>
       )}
       <Footer />
-    </>
+    </div>
   );
 }
 

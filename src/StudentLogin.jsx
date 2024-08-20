@@ -167,13 +167,15 @@ function StudentLogin() {
     }
 
     return (
-        <>
+        <div style={{ minHeight: "100vh" }}>
             { Header('back', null, 'selectUser') }
             <div className="header-height"/>
             { PageBgImage('/src/img/download.avif', 'center') }
 
             <br />
-            <div className='section-container section-padding'>
+            <div className='section-container section-padding center-container'>
+              <div className="max-width-container">
+
                 <h2 className="info-card-title">Student Login</h2>
 
                 <div className="info-card">
@@ -222,6 +224,7 @@ function StudentLogin() {
                     </div>
                 </div>
 
+              </div> {/* max-width-container */}
 
             </div>
 
@@ -296,7 +299,7 @@ function StudentLogin() {
                 </div>
             )}
             <Footer />
-        </>
+        </div>
     );
 }
 

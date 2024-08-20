@@ -22,7 +22,7 @@
 
 
 .landing-subtitle {
-  width: 100%;
+  width: min(100%, var(--max-width));
   margin-top: 2rem;
   margin-bottom: 2rem;
 
@@ -35,7 +35,7 @@
 
 
 .landing-button-container {
-  width: 100%;
+  width: min(100%, var(--max-width));
 
   display: flex;
   align-items: center;
@@ -131,6 +131,8 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.22);
+
+  max-width: 19rem;
 }
 
 .artist-card-bg {
@@ -143,7 +145,6 @@
     hsla(0, 0%, 0%, 1) 50%,
     hsla(0, 0%, 0%, 0) 100%);
   z-index: -1;
-  height: "70%";
 }
 
 .artist-card-info {
@@ -175,6 +176,19 @@
 
 .social-media-icon {
   width: 2rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Responsive. */
+/* -------------------------------------------------------------------------- */
+
+
+@media screen and (min-width: 668px) {
+  .landing-img-manifest {
+    width: auto;
+    height: 30%;
+  }
 }
 
 

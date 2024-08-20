@@ -78,7 +78,7 @@ function GuestSignUp() {
   };
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
       <button onClick={handleBackButton}>Back</button>
       <h3>Sign Up</h3>
       <form onSubmit={handleSubmit}>
@@ -130,7 +130,7 @@ function GuestSignUp() {
       <label>Already have an account?</label>
       <a href='#'>Login</a>
       <Footer />
-    </>
+    </div>
   );
 };
 
