@@ -1,0 +1,213 @@
+
+/*******************************************************************************
+ * Re usable stylings.
+ ******************************************************************************/
+
+/* Sunflower Font */
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Sunflower", sans-serif;
+  letter-spacing: .2rem;
+}
+
+body {
+  overflow-x: hidden;
+
+  color: white;
+  background-color: black;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-heading {
+  font-size: 2.2rem;
+  color: gold;
+}
+
+.icon-text-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-text-container p {
+  font-size: 1.6rem;
+}
+
+
+.mt-1 { margin-top: 2rem; }
+.mt-2 { margin-top: 4rem; }
+.mb-1 { margin-bottom: 2rem; }
+.mb-2 { margin-bottom: 4rem; }
+
+
+/*******************************************************************************
+ * Header things.
+ ******************************************************************************/
+
+.header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2rem;
+  padding: 1.2rem 0;
+}
+
+.btn-header {
+  background: none;
+  border-style: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+
+/*******************************************************************************
+ * Landing page specific.
+ ******************************************************************************/
+
+#landing-main-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+#landing-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  filter: blur(8px);
+
+  background-image: url('/src/images/landing-bg-placeholder-4.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+
+#landing-img-manifest {
+  margin-bottom: 1rem;
+  width: 90%; /* TODO: On larger screen it should be 60% */
+}
+
+
+#landing-subtitle {
+  width: 70%;
+  text-align: center;
+  color: white;
+  letter-spacing: .1em;
+  font-size: calc(.6em + 1vw);
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 2rem;
+}
+
+
+#landing-button-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  width: 80%;
+
+  /* This is for smaller screens */
+  flex-direction: column;
+}
+
+.landing-button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 1.3rem;
+  width: 100%;
+  min-height: 2.5rem;
+
+  /* border-radius: 10px; */
+  text-decoration: none;
+
+  background-color: #d8bd22;
+  transition: .2s;
+}
+
+.landing-button:hover {
+  background-color: gold;
+}
+
+.landing-button.second {
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  border: 2px solid white;
+}
+
+
+.landing-button.second:hover {
+  color: gold;
+  border: 2px solid gold;
+}
+
+.landing-content {
+  /* background-color: red; */
+  width: 85%;
+}
+
+
+
+#artists-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.artist-card {
+  background-color: red;
+  min-height: 800px;
+}
+
+.artist-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.artist-image {
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  transition: .6s;
+}
+
+.artist-image-container:hover .artist-image  {
+  transform: scale(1.05);
+}
+
