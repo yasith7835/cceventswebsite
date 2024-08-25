@@ -29,5 +29,13 @@
   gap: 1rem;
   border-radius: 10px;
   border: 2px solid var(--color-gold);
+
+  transition: .3s;
 }
 
+
+.user-login-btn:hover {
+  cursor: pointer;
+  scale: 1.01;
+  background-color: rgba(0, 0, 0, .6);
+}

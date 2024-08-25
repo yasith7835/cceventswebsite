@@ -13,7 +13,7 @@
 
   --max-width: 50rem;
 
-  --header-height: 2.8rem;
+  --header-height: 3.4rem;
   --header-padding-topbot: .5rem;
   --header-full-height: calc(var(--header-height) + 2 * var(--header-padding-topbot));
   --header-bg: rgba(0, 0, 0, .5);
@@ -69,6 +69,10 @@ body {
 .mt-2 { margin-top: 4rem; }
 .mb-1 { margin-bottom: 2rem; }
 .mb-2 { margin-bottom: 4rem; }
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
 
 .icon-svg {
   height: var(--svg-icon-size);
@@ -128,7 +132,21 @@ body {
   bottom: 0;
   height: var(--footer-height);
   width: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
+
+
+@media screen and (min-width: 668px) {
+
+  .footer {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -214,8 +232,14 @@ body {
 }
 
 
+/* TODO: Add color (maybe like blueish and hover effect of color). */
 .hyper-link-button {
   text-decoration: underline;
+}
+
+
+.hyper-link-button:hover {
+  cursor: pointer;
 }
 
 

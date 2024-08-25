@@ -187,8 +187,18 @@
 @media screen and (min-width: 668px) {
   .landing-img-manifest {
     width: auto;
-    height: 30%;
+    height: 60%;
   }
+
+  .landing-button-container {
+    flex-direction: row;
+  }
+
+  .landing-main-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
 }
 
 
