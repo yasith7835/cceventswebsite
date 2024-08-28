@@ -4,6 +4,7 @@ const API_URL = import.meta.env.VITE_API_KEY;
 
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { PageBgImage } from './elems.jsx';
 
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice';
@@ -144,22 +145,19 @@ payhere.onError = function onError(error) {
   }
 
   return (
-    <>
+    <div style={{ minHeight: "100vh" }}>
     { Header('back', null, 'landing') }
-
-    <div className="bg-image" />
-    <div className="bg-overlay"/>
-    {/* FIXME: */}
-    <br /><br /><br /><br />
+    <div className="header-height"/>
+    { PageBgImage('/src/img/download.avif', 'center') }
 
     <div className='section-container section-padding'>
-      <h2 className="title-user-name">Tickets</h2>
+      <h2 className="info-card-title">Tickets</h2>
 
       <div className="info-card">
       <form onSubmit={handleSubmit}>
-      <p className='profile-info-title'>Seat Type:</p>
+      <p className="info-card-label">Seat Type:</p>
         <select
-          className='profile-info-detail'
+          className="info-card-item"
           id="seatType"
           name="seatType"
           required
@@ -174,10 +172,10 @@ payhere.onError = function onError(error) {
         </select>
       <br /><br />
 
-        {ticketType === "vip" ? (
+        { ticketType === "vip" ? (
           <div>
-            <p className='profile-info-title'>Contact Event Organizers</p>
-            <p className='profile-info-detail'>
+            <p className="info-card-label">Contact Event Organizers</p>
+            <p className="info-card-item">
               Name: Lishan Hettipathirana<br/>
               Phone: +94 76 325 7943<br/>
               <br />
@@ -191,9 +189,9 @@ payhere.onError = function onError(error) {
           </div>
         ) : (
           <>
-            <p className='profile-info-title'>Number of Tickets:</p>
+            <p className="info-card-label">Number of Tickets:</p>
             <input
-              className='profile-info-detail'
+              className="info-card-item"
               type="number"
               id="numTickets"
               name="numTickets"
@@ -207,10 +205,10 @@ payhere.onError = function onError(error) {
             />
             <br />
             <br />
-            <p className='profile-info-title'>Total: Rs. {total || 0}</p>
+            <p className="info-card-label">Total: Rs. {total || 0}</p>
             <br />
             <div className="center-container">
-            <input className='landing-button' type="submit" value="Checkout" />
+            <input className="landing-button" type="submit" value="Checkout" />
             </div>
           </>
         )}
@@ -242,7 +240,7 @@ payhere.onError = function onError(error) {
         </div>
       )}
       <Footer />
-    </>
+    </div>
   );
 }
 

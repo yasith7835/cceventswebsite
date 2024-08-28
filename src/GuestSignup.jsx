@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrentPage } from './userSlice';
+
+import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { PageBgImage } from './elems.jsx';
 
 function GuestSignUp() {
   const [first_name, setFirstName] = useState("");
@@ -49,15 +52,15 @@ function GuestSignUp() {
       alert("Confirmed password does not match entered Password.");
       return;
     }
-    
-    try{
+
+    try {
       const API_URL = import.meta.env.VITE_API_KEY;
       const response = await fetch(`${API_URL}/signup`, {
         method: 'POST',
         headers: {
-          'Content-Type' : 'application/json'
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({user_id, password, first_name, last_name, phone: `0${phone}`, email, n_regular_tickets, user_type})
+        body: JSON.stringify({ user_id, password, first_name, last_name, phone: `0${phone}`, email, n_regular_tickets, user_type })
       });
 
       const errorData = await response.json();
@@ -78,59 +81,85 @@ function GuestSignUp() {
   };
 
   return (
-    <>
-      <button onClick={handleBackButton}>Back</button>
-      <h3>Sign Up</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" required
-          onChange={(e) => setFirstName(e.target.value)}
-        />
+    <div style={{ minHeight: "100vh" }}>
+      {Header('back', null, 'selectUser')}
+      <div className="header-height" />
+      {PageBgImage('/src/img/download.avif', 'center')}
 
-        <label htmlFor="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required
-          onChange={(e) => setLastName(e.target.value)}
-        />
+      <br />
 
-        <label htmlFor="guestNic">NIC:</label>
-        <input type="text" id="guestNic" name="guestNic" required
-          onChange={(e) => setGuestNic(e.target.value)}
-        />
+      <div className='section-container section-padding center-container'>
+        <div className="max-width-container">
+          <div className="info-card">
 
-        <label htmlFor="phone">Phone:</label>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <span>+94</span>
-          <input type="tel" id="phone" name="phone" required
-            onChange={(e) => setPhone(e.target.value)}
-            style={{ marginLeft: '5px' }}
-          />
+            <h2 className="info-card-title"> Sign up </h2>
+            <form onSubmit={handleSubmit}>
+            <p className='info-card-label'>First Name:</p>
+              <input className='info-card-item' type="text" id="first_name" name="first_name" required
+                onChange={(e) => setFirstName(e.target.value)}
+              /> <br /> <br />
+
+              <p className='info-card-label'>Last Name:</p>
+              <input className='info-card-item' type="text" id="last_name" name="last_name" required
+                onChange={(e) => setLastName(e.target.value)}
+              /> <br /> <br />
+
+              <p className='info-card-label'>NIC:</p>
+              <input className='info-card-item' type="text" id="guestNic" name="guestNic" required
+                onChange={(e) => setGuestNic(e.target.value)}
+              /> <br /> <br />
+
+              <p className='info-card-label'>Phone:</p>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span>+94</span>
+                <input className="info-card-item" type="tel" id="phone" name="phone" required
+                  onChange={(e) => setPhone(e.target.value)}
+                  style={{ marginLeft: '5px' }}
+                />
+              </div>
+              <br />
+
+              <p className='info-card-label'>Email:</p>
+              <input className='info-card-item' type="email" id="email" name="email" required
+                onChange={(e) => setEmail(e.target.value)}
+              /> <br /> <br />
+
+              <p className='info-card-label'>Password:</p>
+              <input className='info-card-item' type="password" id="password" name="password" required
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setIsPasswordTyped(e.target.value.length > 0); // Update the state
+                }}
+              /> <br /> <br />
+
+              <p className='info-card-label'>Conform Password:</p>
+              <input className='info-card-item' type="password" id="confirmPassword" name="confirmPassword" required
+                disabled={!isPasswordTyped} // Disable if password is not typed
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              /> <br /> <br />
+
+              <button
+                className="landing-button"
+                style={{ width: "100%" }}
+                type="submit"
+                value="Login"
+              >
+                Sign Up
+              </button>
+            </form>
+
+            <br />
+
+            <label>Already have an account?</label>
+            <p className='hyper-link-button'>Login</p>
+
+          </div>
         </div>
+      </div>
 
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" name="email" required
-          onChange={(e) => setEmail(e.target.value)}
-        />
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" required
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setIsPasswordTyped(e.target.value.length > 0); // Update the state
-          }}
-        />
-
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required
-          disabled={!isPasswordTyped} // Disable if password is not typed
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-
-        <input type="submit" value="Sign Up" />
-      </form>
-      <label>Already have an account?</label>
-      <a href='#'>Login</a>
       <Footer />
-    </>
+    </div>
   );
 };
 

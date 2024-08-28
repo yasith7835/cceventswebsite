@@ -4,9 +4,10 @@ import { setLogin, setCurrentPage } from './userSlice';
 
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { PageBgImage } from './elems.jsx';
 
 import "./css/Modal.css";
-import "./css/StudentLogin.css";
+
 
 function StudentLogin() {
     const [studentId, setStudentId] = useState("");
@@ -166,23 +167,22 @@ function StudentLogin() {
     }
 
     return (
-        <>
-
-            {Header('back', null, 'selectUser')}
-            <div className="bg-image-student-login" />
-            <div className="bg-overlay" />
-            <br /><br /><br /><br /> {/* FIXME: */}
-
+        <div style={{ minHeight: "100vh" }}>
+            { Header('back', null, 'selectUser') }
+            <div className="header-height"/>
+            { PageBgImage('/src/img/download.avif', 'center') }
 
             <br />
-            <div className='section-container section-padding'>
-                <h2 className="title-user-name">Student Login</h2>
+            <div className='section-container section-padding center-container'>
+              <div className="max-width-container">
+
+                <h2 className="info-card-title">Student Login</h2>
 
                 <div className="info-card">
                     <form onSubmit={handleSubmit}>
-                        <p className='profile-info-title'>Student ID:</p>
+                        <p className='info-card-label'>Student ID:</p>
                         <input
-                            className='profile-info-detail'
+                            className="info-card-item"
                             type="text"
                             id="studentId"
                             name="studentID"
@@ -193,9 +193,9 @@ function StudentLogin() {
                         <br />
                         <br />
 
-                        <p className='profile-info-title'>Password:</p>
+                        <p className="info-card-label">Password:</p>
                         <input
-                            className='profile-info-detail'
+                            className="info-card-item"
                             type="password"
                             id="password"
                             name="password"
@@ -206,7 +206,7 @@ function StudentLogin() {
                         <br /><br />
 
                         <button
-                            className='landing-button'
+                            className="landing-button"
                             style={{ width: "100%" }}
                             type="submit"
                             value="Login"
@@ -224,6 +224,7 @@ function StudentLogin() {
                     </div>
                 </div>
 
+              </div> {/* max-width-container */}
 
             </div>
 
@@ -298,7 +299,7 @@ function StudentLogin() {
                 </div>
             )}
             <Footer />
-        </>
+        </div>
     );
 }
 
