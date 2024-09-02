@@ -1,0 +1,41 @@
+
+.login-selection-container {
+
+  gap: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+.login-selection-container svg {
+  width: 4rem;
+}
+
+.user-login-btn p {
+  color: var(--color-gold);
+  font-size: 1.2rem;
+}
+
+.user-login-btn {
+  background-color: rgba(0, 0, 0, .4);
+  padding: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 10px;
+  border: 2px solid var(--color-gold);
+
+  transition: .3s;
+}
+
+
+.user-login-btn:hover {
+  cursor: pointer;
+  scale: 1.01;
+  background-color: rgba(0, 0, 0, .6);
+}
