@@ -27,7 +27,7 @@ function LandingPage() {
     <>
       {/* The background image that covers the entire page. */}
       { Header('profile', 'loginout') }
-      { PageBgImage('/src/img/bg3.jpg') }
+      { PageBgImage('/cceventswebsite/src/img/bg3.jpg') }
 
       { heroSection(handleBuyNowClick) }
       { eventInfo() }

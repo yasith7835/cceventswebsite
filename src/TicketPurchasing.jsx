@@ -13,7 +13,7 @@ import "./css/Modal.css";
 import './css/TicketPurchasing.css';
 
 function TicketPurchasing() {
-  const [ntickets, setNTickets] = useState(0);
+ const [ntickets, setNTickets] = useState(0);
   const [ticketType, setTicketType] = useState('');
   const [total, setTotal] = useState(0);
   const [modal, setModal] = useState(true);// Modal is visible as default
@@ -66,6 +66,7 @@ function TicketPurchasing() {
     }
   };
    
+
   const handlePayment = (paymentData) => {
     const payment = {
       sandbox: true,
@@ -121,6 +122,7 @@ payhere.onError = function onError(error) {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Avoid page reload
+   
     const data = await fetchPaymentData();
     if (data) {
        handlePayment(data); 
