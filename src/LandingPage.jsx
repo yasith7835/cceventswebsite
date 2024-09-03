@@ -12,11 +12,13 @@ import 'swiper/css';
 import './css/LandingPage.css';
 
 function buyNow() {
-  window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  /* window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; */
+  window.location.href = "https://mytickets.lk/events/66d5758db95a772df7296d52";
 }
 
 function openWhatsapp() {
-  window.location.href = "https://Wa.me/+94710819950";
+ 
+  window.location.href = "https://Wa.me/+94766461323";
 }
 
 function openTikTok() {
@@ -53,8 +55,8 @@ function LandingPage() {
       { venueSection() }
       { contactSection() }
 
-      <br/>
-      {/* <Footer/> */}
+      <div className="footer-break"/>
+      <Footer/>
     </>
   );
 }
@@ -78,8 +80,8 @@ function heroSection(handleBuyNowClick) {
       <img className="landing-img-manifest" src='/src/img/manifest24.png'/>
 
       <p className="landing-subtitle">
-        Embark on a journey of discovery! Explore the dynamic events
-        curated by the Curtin Colombo Events Team
+        The biggest concert hosted by a private university.
+        Embark on a dazzling journey of musical exploration.
       </p>
 
       <div className="landing-button-container">
@@ -148,7 +150,7 @@ function eventInfo() {
         </div>
 
     {/*
-
+        Thakee Nathees.
         <div className="info-card" style={{
           overflow: "hidden",
           backgroundColor: "rgba(0, 0, 0, .6)",
@@ -295,12 +297,17 @@ function venueSection() {
 
 function contactSection() {
   return (
-      <div className="section-container section-padding center-container section-margin-top">
+      <div className="contact-section section-container section-padding center-container section-margin-top">
         <div className="max-width-container">
           <h2 className="section-heading"> Contact </h2>
 
-          <p>Tel: +94 710819950</p>
-          <p>Email: curtincolombo.eventsteam@gmail.com</p>
+          <p>Tel: +94 76 646 1323</p>
+          <p style={{overflowX: "auto", }}>
+            Email: curtincolombo.eventsteam@gmail.com
+          </p>
+
+          <br/>
+          <br/>
           <br/>
 
           <div>

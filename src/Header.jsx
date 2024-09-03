@@ -72,7 +72,7 @@ function Header(left=null, right=null, back_location='') {
   return (
     <div className="header">
       {getElement(left, fn, back_location)}
-      <img src="/src/img/logo-header.png"/>
+      <img src="/src/img/ccsg.png"/>
       {getElement(right, fn, back_location)}
     </div>
   );

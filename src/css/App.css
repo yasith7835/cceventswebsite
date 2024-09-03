@@ -140,12 +140,18 @@ body {
 
 .footer-content {
   display: flex;
-  justify-content:space-evenly;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: baseline;
 }
 
-@media screen and (min-width: 668px) {
+.footer-break {
+  margin-top: 5rem;
+}
 
+
+@media screen and (min-width: 668px) {
   .footer {
     justify-content: space-between;
     flex-direction: row;
@@ -153,6 +159,16 @@ body {
 }
 
 
+@media screen and (min-width: 495px) {
+  .footer-content {
+    gap: 0rem;
+    flex-direction: row;
+  }
+
+  .footer-break {
+    margin-top: 1rem;
+  }
+}
 
 
 /* -------------------------------------------------------------------------- */
