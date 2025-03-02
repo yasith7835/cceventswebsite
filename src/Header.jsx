@@ -72,7 +72,7 @@ function Header(left=null, right=null, back_location='') {
   return (
     <div className="header">
       {getElement(left, fn, back_location)}
-      <img src="/src/img/logo-header.png"/>
+      <img src="/src/img/ccsg.png"/>
       {getElement(right, fn, back_location)}
     </div>
   );
@@ -81,6 +81,9 @@ function Header(left=null, right=null, back_location='') {
 
 function getElement(name, fn, back_location) {
   const handleBackButton = () => { fn.dispatch(fn.setCurrentPage(back_location)); };
+
+  // NOTE: We don't need it for now.
+  return empty();
 
   if (name == 'profile') return profile(fn.login, fn.handleLoginClick, fn.handleProfileClick);
   if (name == 'loginout') return loginout(fn.login, fn.handleLoginClick);
